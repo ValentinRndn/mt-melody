@@ -12,8 +12,67 @@
 
 @layer utilities {
 
+  .card-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(0, 255, 102, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
 
-  .gradient {
+.card-container:hover::before {
+    transform: translateX(100%);
+}
+
+.card-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 255, 102, 0.1);
+}
+
+        .background-animation {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          overflow: hidden;
+      }
+
+      .background-animation span {
+          position: absolute;
+          display: block;
+          pointer-events: none;
+          width: 20px;
+          height: 20px;
+          background: #00FF66;
+          animation: animate 25s linear infinite;
+          opacity: 0;
+      }
+
+      @keyframes animate {
+          0% {
+              transform: translate(0, 0);
+              opacity: 0;
+          }
+          10% {
+              opacity: 1;
+          }
+          90% {
+              opacity: 1;
+          }
+          100% {
+              transform: translate(300px, 1000px);
+              opacity: 0;
+          }
+      }
+
+
+  /* .gradient {
     background: rgb(205,208,224);
     background: linear-gradient(304deg, rgba(205,208,224,1) 0%, rgba(187,185,228,1) 29%, rgba(217,167,228,1) 72%, rgba(229,188,255,1) 100%);
   }
@@ -24,7 +83,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
-  }
+  } */
   
 }
 

@@ -16,16 +16,12 @@ const UserSchema = new mongoose.Schema({
   },
   profilePicture: {
     type: String,
-    default: 'default-profile.png', // Image par défaut si l'utilisateur n'en télécharge pas
+    default: 'default-profile.png', 
   },
   role: {
     type: String,
-    enum: ['admin', 'client', 'professor'],
-    default: 'client',
-  },
-  stripeAccountId: {
-    type: String,
-    default: '',
+    enum: ['admin', 'artist'],
+    default: 'artist',
   },
 });
 
