@@ -86,13 +86,3 @@
   } */
   
 }
-
-.form-group { 
-  @apply mb-1 text-left;
-}
-
-
-input {
-  @apply w-full p-2 rounded-lg border-b border-gray-500
-}
-

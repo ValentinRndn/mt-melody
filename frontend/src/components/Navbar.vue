@@ -1,172 +1,159 @@
 <template>
-  <nav class="navbar bg-darkgray mb-4">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <!-- Logo -->
-        <div class="flex-shrink-0 flex items-center">
-          <router-link to="/" class="text-2xl font-bold textGradient">Academ-Message</router-link>
-        </div>
+  <aside :class="{ 'is-expanded': is_expanded }" class="flex flex-col w-[calc(2rem+32px)] min-h-[100vh] overflow-hidden p-4 bg-bluegrey text-lightgrey ease-out duration-200">
 
-        <!-- Navigation Links pour petits écrans -->
-        <div class="flex md:hidden space-x-8 font-semibold text-lg">
-          <router-link 
-            v-if="userRole === 'admin'" 
-            to="/adminPage" 
-            class="text-white hover:text-purplee" 
-            :class="{ 'active-link': $route.path === '/adminPage' }"
-          >
-            Accueil
-          </router-link>
-          <router-link 
-            to="/" 
-            class="text-white hover:text-purplee" 
-            :class="{ 'active-link': $route.path === '/' }"
-          >
-            Conversations
-          </router-link>
-          <router-link 
-            to="/professors" 
-            class="text-white hover:text-purplee" 
-            :class="{ 'active-link': $route.path === '/professors' }"
-          >
-            Professeurs
-          </router-link>
-        </div>
+    <div class="navigation my-0 -mx-4 z-10">
+      <div class="title-nav flex justify-center items-center gap-2 text-xl mb-5 ">
+      <svg xmlns="http://www.w3.org/2000/svg" class="text-lightgreen" width="32" height="32" viewBox="0 0 512 512"><path d="M426 32.1c-2.2 0-5.1.6-5.1.6L203.3 65.9C189.5 69.6 177 83 176 97.5V384h-61v-.1c-28 0-51.1 20-51.1 48s23.1 48 51.3 48h36.2c15.3 0 28.9-6.9 38.3-17.5.1-.1.3-.1.4-.2.6-.6 1-1.5 1.5-2.1 1.3-1.6 2.4-3.2 3.4-5 9.6-14.1 13-32.8 13-41.1V182l208-38v192h-60.5c-28.3 0-51.2 19.9-51.2 48s22.9 48 51.2 48h37.2c18.2 0 34.1-6 43.2-21h.2c9-12 12-30.2 12-54.9V53.3c-.1-11.7-10-21.2-22.1-21.2z" fill="#888888"/></svg>
+      <h1 class="text-lightgreen text-center font-bold">MT MELODY</h1>
+    </div>
+      <router-link :class="['button ', { 'bg-lightgreen bg-opacity-20 text-lightgreen rounded-md': currentPage === '/adminHome' }]" to="/adminHome">
+        <img src="../assets/navbar/home.svg" alt="logo" class="material-icons w-[2rem] mt-4 mb-4" >
+        <span class="text" :class="{ 'text-lightgreen': currentPage === '/adminHome' }">Tableau de bord</span>
+      </router-link>
 
-        <!-- Boutons d'authentification ou photo de profil -->
-        <div class="flex md:hidden items-center space-x-4">
-          <template v-if="isAuthenticated">
-            <div class="relative profil-container flex items-center justify-center">
-              <img
-                :src="userProfilePicture"
-                alt="Profile"
-                class="w-10 h-10 rounded-full border border-gray-300 cursor-pointer"
-                @click="toggleProfileMenu"
-              />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                :class="['cursor-pointer text-white transition transform duration-200', isProfileMenuOpen ? 'rotate-180' : 'rotate-0']"
-                @click="toggleProfileMenu"
-              >
-                <path fill="currentColor" d="m12 15.4l-6-6L7.4 8l4.6 4.6L16.6 8L18 9.4z" />
-              </svg>
+      <router-link :class="['button ', { 'text-lightgreen bg-red': currentPage === '/backoffice/users' }]" to="/backoffice/users">
+        <img src="../assets/logo_utilisateur.svg" alt="logo" class="material-icons w-[2rem] mt-4 mb-4">
+        <span class="text" :class="{ 'text-lightgreen': currentPage === '/backoffice/users' }">Utilisateur</span>
+      </router-link>
 
-              <!-- Menu déroulant -->
-              <div v-if="isProfileMenuOpen" class="absolute right-0 mt-32 w-48 backdrop-blur-xl bg-darkgray border border-white shadow-lg rounded-md z-20">
-                <ul class="py-1 text-white">
-                  <li>
-                    <router-link to="profileParameter" class="block px-4 py-2 hover:bg-lightgray cursor-pointer">Paramètre profil</router-link>
-                  </li>
-                  <li>
-                    <a @click="logout" class="block px-4 py-2 hover:bg-lightgray cursor-pointer">Se déconnecter</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </template>
-          <template v-else>
-            <button @click="goToLogin" class="text-purplee rounded-lg border border-purplee p-2 hover:text-white">
-              Se connecter | S'inscrire
-            </button>
-          </template>
-        </div>
+      <router-link :class="['button ', { 'text-lightgreen bg-red': currentPage === '/backoffice/documentation' }]" to="/backoffice/documentation">
+        <img src="../../assets/logo_doc.svg" alt="logo" class="material-icons w-[2rem] mt-4 mb-4">
+        <span class="text" :class="{ 'text-lightgreen': currentPage === '/backoffice/documentation' }">Documentation</span>
+      </router-link>
 
-        <!-- Mobile Menu Button pour grands écrans -->
-        <div class="hidden md:flex items-center">
-          <button @click="isMobileMenuOpen = !isMobileMenuOpen" class="text-gray-500 hover:text-gray-900 focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </div>
+      <router-link :class="['button ', { 'text-lightgreen bg-red': currentPage === '/backoffice/structure' }]" to="/backoffice/structure">
+        <img src="../../assets/structure_logo.png" alt="logo" class="material-icons w-[2rem] mt-4 mb-4">
+        <span class="text" :class="{ 'text-lightgreen': currentPage === '/backoffice/structure' }">Structure</span>
+      </router-link>
     </div>
 
-    <!-- Menu Mobile pour grands écrans -->
-    <div v-if="isMobileMenuOpen" class="hidden md:flex bg-white border-t border-gray-200">
-      <div class="pt-2 pb-3 space-y-1">
-        <router-link to="/" class="block px-4 py-2 text-gray-500 hover:text-gray-900" :class="{ 'active-link': $route.path === '/' }">Accueil</router-link>
-        <router-link to="/" class="block px-4 py-2 text-gray-500 hover:text-gray-900" :class="{ 'active-link': $route.path === '/' }">Conversations</router-link>
-        <router-link to="/professors" class="block px-4 py-2 text-gray-500 hover:text-gray-900" :class="{ 'active-link': $route.path === '/professors' }">Professeurs</router-link>
-      </div>
-      <div class="py-3 border-t border-gray-200">
-        <button @click="goToLogin" class="block w-full text-left px-4 py-2 text-gray-500 hover:text-gray-900">Se connecter</button>
-        <button @click="goToSignup" class="block w-full text-left px-4 py-2 bg-blue-500 text-white hover:bg-blue-600">S'inscrire</button>
-      </div>
+    <div class="menu-toggle-wrap flex justify-end items-end relative top-0 ease-out duration-200 mt-4 mb-4">
+      <button class="menu-toggle" @click="ToggleMenu">
+        <span class="material-icons">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.41 6L5 7.41L9.58 12L5 16.59L6.41 18l6-6z"/><path fill="currentColor" d="m13 6l-1.41 1.41L16.17 12l-4.58 4.59L13 18l6-6z"/></svg>
+        </span>
+      </button>
     </div>
-  </nav>
+
+  </aside>
 </template>
 
 
-<script>
-import axios from 'axios';
 
-export default {
-  data() {
-    return {
-      isMobileMenuOpen: false,
-      isProfileMenuOpen: false, // État pour gérer l'ouverture/fermeture du menu profil
-      isAuthenticated: false, // État pour vérifier si l'utilisateur est connecté
-      userProfilePicture: '' // URL de la photo de profil
-    };
-  },
-  mounted() {
-    this.checkAuthStatus();
-  },
-  methods: {
-    // Méthode pour vérifier si l'utilisateur est authentifié
-    checkAuthStatus() {
-      const token = localStorage.getItem('token');
-      if (token) {
-        this.isAuthenticated = true;
+<script setup>
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
-        // Faire une requête pour obtenir le profil utilisateur
-        axios.get('http://localhost:5000/api/users/profile', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        })
-        .then((response) => {
-          this.userProfilePicture = `http://localhost:5000/uploads/${response.data.profilePicture}`;
-        })
-        .catch((error) => {
-          console.error('Erreur lors de la récupération des informations du profil:', error);
-          this.userProfilePicture = 'default-profile-pic-url.jpg'; // Image par défaut si erreur
-        });
-      }
-    },
-    toggleProfileMenu() {
-      this.isProfileMenuOpen = !this.isProfileMenuOpen;
-    },
-    goToLogin() {
-      this.$router.push({ name: 'auth' });
-    },
-    goToSignup() {
-      this.$router.push({ name: 'signup' });
-    },
-    logout() {
-      // Supprimer le token et déconnecter l'utilisateur
-      localStorage.removeItem('token');
-      this.isAuthenticated = false;
-      this.isProfileMenuOpen = false;
-      this.$router.push({ name: 'auth' }); // Redirige vers la page de connexion après déconnexion
-    }
-  }
+const is_expanded = ref(false);
+const ToggleMenu = () => {
+  is_expanded.value = !is_expanded.value;
 };
+
+const currentPage = ref(''); // Initialisez currentPage avec une référence
+
+const route = useRoute(); // Obtenez la route actuelle avec useRoute
+
+watch(
+  () => route.path, // Surveillez la propriété path de l'objet route
+  (newPath) => {
+    currentPage.value = newPath; // Met à jour currentPage avec le chemin de la route actuelle
+  }
+);
+
+// Mettez à jour currentPage lorsque le composant est monté
+currentPage.value = route.path;
 </script>
 
+
 <style scoped>
-.profil-container {
-  position: relative;
+.button .text {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  overflow: hidden; 
+  white-space: nowrap; 
 }
 
-.active-link {
-  text-decoration: underline;
-  text-underline-offset: 4px; 
-  text-decoration-thickness: 2px; 
-  color: rgba(217,167,228,1);
+.button {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  transition: background-color 0.2s ease-out, width 0.2s ease-out;
+  gap: 10px;
 }
+
+.button:hover {
+  background-color: #f5c77e;
+}
+
+.menu .button {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s ease-out;
+}
+
+.menu .button .material-icons {
+  font-size: 2rem;
+  color: #fff;
+  transition: color 0.2s ease-out;
+}
+
+.menu .button .text {
+  color: #fff;
+  transition: color 0.2s ease-out;
+}
+
+.is-expanded {
+  width: 250px;
+}
+
+.navigation .is_expanded {
+  top: -4rem;
+}
+
+.is-expanded .menu-toggle-wrap .menu-toggle {
+  transform: rotate(180deg);
+}
+
+.is-expanded .button .text {
+  opacity: 1;
+}
+
+.is-expanded .button {
+  margin: 20px;
+}
+
+.menu-toggle-wrap .menu-toggle {
+  transition: transform 0.2s ease-out;
+}
+
+.menu-toggle-wrap .menu-toggle .material-icons {
+  font-size: 2rem;
+  color: #fff;
+  transition: color 0.2s ease-out;
+}
+
+.menu-toggle-wrap .menu-toggle:hover .material-icons {
+  color: #f5c77e;
+  transform: translateX(0.5rem);
+}
+
+.menu-toggle-wrap .menu-toggle .material-icons .menu-toggle {
+  transform: rotate(-180deg);
+}
+
 </style>
+
+
+
+
+<!-- Exportation du composant -->
+<script>
+
+export default {
+  name: 'AdminBar',
+}
+
+</script>

@@ -6,9 +6,12 @@ import AdminPage from './views/AdminPage.vue';
 import Authentification from './views/Authentification.vue';
 import profileParameter from './views/ProfileParameter.vue';
 import Home from './views/Home.vue';
+import AdminHome from './views/AdminDashboard/AdminHome.vue';
+import ArtistHome from './views/ArtistDashboard/ArtistHome.vue';
+
 
 const router = createRouter({
-    history: createWebHistory(), // Utiliser createWebHistory pour Vue Router 4
+    history: createWebHistory(), 
     routes: [
       {
         path: '/',
@@ -30,6 +33,16 @@ const router = createRouter({
           name: 'profileParameter',
           component: profileParameter,
         },
+        {
+          path: '/adminHome',
+          name: 'AdminHome',
+          component: AdminHome,
+        },
+        {
+          path: '/artistHome',
+          name: 'ArtistHome',
+          component: ArtistHome,
+        },
     ]
 });
 
@@ -39,12 +52,12 @@ router.beforeEach((to, from, next) => {
       const token = localStorage.getItem('token');
     
       if (!token) {
-        next({ name: 'auth' }); // Rediriger vers la page de connexion si pas de token
+        next({ name: 'auth' }); 
       } else {
-        next(); // Continuer si l'utilisateur est authentifié
+        next(); 
       }
     } else {
-      next(); // Continuer si la route n'est pas protégée
+      next();
     }
   });
   
