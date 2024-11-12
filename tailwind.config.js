@@ -11,6 +11,7 @@ module.exports = {
         'lightgreen': '#00FF66',
         'lightgrey': '#BABCBE',
         'bluegrey': '#0D151C',
+        'backcard': 'rgba(255, 255, 255, 0.05)',
 
       },
       fontFamily: {
