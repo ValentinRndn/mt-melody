@@ -21,35 +21,35 @@
         </div>
 
         <div class="stat-container border border-lightgrey border-opacity-20 rounded-[10px] p-4 flex flex-col gap-2 w-full bg-backcard">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" class="bg-lightgreen bg-opacity-20  rounded-[10px] p-2" viewBox="0 0 24 24"><path fill="#00FF66" d="M7.5 8a3 3 0 1 0 0-6a3 3 0 0 0 0 6M2 10.768C2 9.79 2.791 9 3.768 9h4.767A4 4 0 0 0 8 11a4 4 0 0 0 1.354 3H8.268a2.77 2.77 0 0 0-2.593 1.796c-1.498-.366-2.427-1.183-2.974-2.093C2 12.536 2 11.336 2 11.127zM16 11a4 4 0 0 0-.535-2h4.767C21.21 9 22 9.791 22 10.768v.36c0 .207 0 1.408-.7 2.575c-.548.91-1.477 1.727-2.975 2.093A2.77 2.77 0 0 0 15.732 14h-1.086A4 4 0 0 0 16 11m3.5-6a3 3 0 1 1-6 0a3 3 0 0 1 6 0m-13 11.768C6.5 15.79 7.291 15 8.268 15h7.464c.977 0 1.768.791 1.768 1.768v.36c0 .207 0 1.408-.7 2.575C16.057 20.937 14.613 22 12 22s-4.058-1.063-4.8-2.297c-.7-1.167-.7-2.367-.7-2.576zM12 14a3 3 0 1 0 0-6a3 3 0 0 0 0 6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" class="bg-lightgreen bg-opacity-20  rounded-[10px] p-2" viewBox="0 0 20 20"><g fill="#00FF66"><path fill-rule="evenodd" d="M6.75 3.81a1 1 0 0 1 .906-.996l9-.846a1 1 0 0 1 1.094.996v2.181a1 1 0 0 1-.901.995l-9 .893a1 1 0 0 1-1.099-.995z" clip-rule="evenodd"/><ellipse cx="14.75" cy="15" rx="3" ry="2.5"/><ellipse cx="5.75" cy="16" rx="3" ry="2.5"/><path fill-rule="evenodd" d="M15.75 5h2v10h-2zm-9 1h2v10h-2z" clip-rule="evenodd"/></g></svg>                        
             <span class="text-white text-3xl font-semibold">1,234</span>
-            <p class="text-lightgrey text-lg font-semibold">Artistes actifs</p>
+            <p class="text-lightgrey text-lg font-semibold">Titres publiés</p>
         </div>
 
         <div class="stat-container border border-lightgrey border-opacity-20 rounded-[10px] p-4 flex flex-col gap-2 w-full bg-backcard">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" class="bg-lightgreen bg-opacity-20  rounded-[10px] p-2" viewBox="0 0 24 24"><path fill="#00FF66" d="M7.5 8a3 3 0 1 0 0-6a3 3 0 0 0 0 6M2 10.768C2 9.79 2.791 9 3.768 9h4.767A4 4 0 0 0 8 11a4 4 0 0 0 1.354 3H8.268a2.77 2.77 0 0 0-2.593 1.796c-1.498-.366-2.427-1.183-2.974-2.093C2 12.536 2 11.336 2 11.127zM16 11a4 4 0 0 0-.535-2h4.767C21.21 9 22 9.791 22 10.768v.36c0 .207 0 1.408-.7 2.575c-.548.91-1.477 1.727-2.975 2.093A2.77 2.77 0 0 0 15.732 14h-1.086A4 4 0 0 0 16 11m3.5-6a3 3 0 1 1-6 0a3 3 0 0 1 6 0m-13 11.768C6.5 15.79 7.291 15 8.268 15h7.464c.977 0 1.768.791 1.768 1.768v.36c0 .207 0 1.408-.7 2.575C16.057 20.937 14.613 22 12 22s-4.058-1.063-4.8-2.297c-.7-1.167-.7-2.367-.7-2.576zM12 14a3 3 0 1 0 0-6a3 3 0 0 0 0 6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg"  width="48" height="48" class="bg-lightgreen bg-opacity-20  rounded-[10px] p-2" viewBox="0 0 24 24"><path fill="#00FF66" d="M8 17.175V6.825q0-.425.3-.713t.7-.287q.125 0 .263.037t.262.113l8.15 5.175q.225.15.338.375t.112.475t-.112.475t-.338.375l-8.15 5.175q-.125.075-.262.113T9 18.175q-.4 0-.7-.288t-.3-.712"/></svg>
             <span class="text-white text-3xl font-semibold">1,234</span>
-            <p class="text-lightgrey text-lg font-semibold">Artistes actifs</p>
+            <p class="text-lightgrey text-lg font-semibold">Ecoutes ce mois</p>
         </div>
 
         <div class="stat-container border border-lightgrey border-opacity-20 rounded-[10px] p-4 flex flex-col gap-2 w-full bg-backcard">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" class="bg-lightgreen bg-opacity-20  rounded-[10px] p-2" viewBox="0 0 24 24"><path fill="#00FF66" d="M7.5 8a3 3 0 1 0 0-6a3 3 0 0 0 0 6M2 10.768C2 9.79 2.791 9 3.768 9h4.767A4 4 0 0 0 8 11a4 4 0 0 0 1.354 3H8.268a2.77 2.77 0 0 0-2.593 1.796c-1.498-.366-2.427-1.183-2.974-2.093C2 12.536 2 11.336 2 11.127zM16 11a4 4 0 0 0-.535-2h4.767C21.21 9 22 9.791 22 10.768v.36c0 .207 0 1.408-.7 2.575c-.548.91-1.477 1.727-2.975 2.093A2.77 2.77 0 0 0 15.732 14h-1.086A4 4 0 0 0 16 11m3.5-6a3 3 0 1 1-6 0a3 3 0 0 1 6 0m-13 11.768C6.5 15.79 7.291 15 8.268 15h7.464c.977 0 1.768.791 1.768 1.768v.36c0 .207 0 1.408-.7 2.575C16.057 20.937 14.613 22 12 22s-4.058-1.063-4.8-2.297c-.7-1.167-.7-2.367-.7-2.576zM12 14a3 3 0 1 0 0-6a3 3 0 0 0 0 6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" class="bg-lightgreen bg-opacity-20  rounded-[10px] p-2" viewBox="0 0 24 24"><path fill="#00FF66" d="M14 11h-1V7h2a1 1 0 0 1 1 1a1 1 0 0 0 2 0a3 3 0 0 0-3-3h-2V3a1 1 0 0 0-2 0v2h-1a4 4 0 0 0 0 8h1v4H9a1 1 0 0 1-1-1a1 1 0 0 0-2 0a3 3 0 0 0 3 3h2v2a1 1 0 0 0 2 0v-2h1a4 4 0 0 0 0-8m-3 0h-1a2 2 0 0 1 0-4h1Zm3 6h-1v-4h1a2 2 0 0 1 0 4"/></svg>
             <span class="text-white text-3xl font-semibold">1,234</span>
-            <p class="text-lightgrey text-lg font-semibold">Artistes actifs</p>
+            <p class="text-lightgrey text-lg font-semibold">Revenus ce mois</p>
         </div>
     </div>
 
             <!-- Performance Line Chart -->
-             <div class="graphs-container w-full flex gap-4 my-12">
-            <div class="chart-container border border-lightgrey border-opacity-20 rounded-[10px] p-4 w-full h-[400px] bg-backcard">
-                <h3 class="text-white text-lg font-semibold mb-4">Performances mensuelles</h3>
-                <canvas id="performanceChart"></canvas>
+             <div class="graphs-container w-full flex gap-8 my-12">
+            <div class="chart-container border border-lightgrey border-opacity-20 rounded-[10px] p-4 w-3/4 h-[500px] bg-backcard mx-auto">
+                <h3 class="text-white text-xl font-semibold mb-4">Performances mensuelles</h3>
+                <canvas class="mx-auto w-full h-full" id="performanceChart"></canvas>
               </div>
       
         <!-- Genre Distribution Doughnut Chart -->
-        <div class="chart-container border border-lightgrey border-opacity-20 rounded-[10px] p-4 w-full h-[400px] bg-backcard">
-            <h3 class="text-white text-lg font-semibold mb-4">Distribution des genres</h3>
-            <canvas id="genreChart"></canvas>
+        <div class="chart-container border border-lightgrey border-opacity-20 rounded-[10px] p-4 w-1/3 h-[500px] bg-backcard">
+            <h3 class="text-white text-xl font-semibold mb-4">Distribution des genres</h3>
+            <canvas class="mx-auto w-full h-full" id="genreChart"></canvas>
           </div>
         </div>
 

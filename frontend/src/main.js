@@ -8,6 +8,7 @@ import profileParameter from './views/ProfileParameter.vue';
 import Home from './views/Home.vue';
 import AdminHome from './views/AdminDashboard/AdminHome.vue';
 import ArtistHome from './views/ArtistDashboard/ArtistHome.vue';
+import AdminArtists from './views/AdminDashboard/AdminArtists.vue';
 
 
 const router = createRouter({
@@ -37,6 +38,11 @@ const router = createRouter({
           path: '/adminHome',
           name: 'AdminHome',
           component: AdminHome,
+        },
+        {
+          path: '/adminArtists',
+          name: 'AdminArtists',
+          component: AdminArtists,
         },
         {
           path: '/artistHome',
