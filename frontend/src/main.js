@@ -9,7 +9,7 @@ import Home from './views/Home.vue';
 import AdminHome from './views/AdminDashboard/AdminHome.vue';
 import ArtistHome from './views/ArtistDashboard/ArtistHome.vue';
 import AdminArtists from './views/AdminDashboard/AdminArtists.vue';
-
+import AdminAlbums from './views/AdminDashboard/AdminAlbums.vue';
 
 const router = createRouter({
     history: createWebHistory(), 
@@ -23,6 +23,11 @@ const router = createRouter({
         path: '/adminPage',
         name: 'adminPage',
         component: AdminPage,
+      },
+      {
+        path: '/adminAlbums',
+        name: 'AdminAlbums',
+        component: AdminAlbums,
       },
         {
             path: '/auth',

@@ -12,6 +12,17 @@ module.exports = {
         'lightgrey': '#BABCBE',
         'bluegrey': '#0D151C',
         'backcard': 'rgba(255, 255, 255, 0.05)',
+        'primary': '#00FF66',
+        'background': '#000810',
+        'sidebar': '#001220',
+        'card-bg': 'rgba(255, 255, 255, 0.05)',
+        'text': '#ffffff',
+        'text-secondary': '#a0a0a0',
+        'hover': 'rgba(0, 255, 102, 0.1)',
+        'border': 'rgba(255, 255, 255, 0.1)',
+        'danger': '#ff4444',
+        'warning': '#FFA500',
+        'success': '#00CC66',
 
       },
       fontFamily: {
@@ -41,4 +52,5 @@ module.exports = {
       }, 
       },
     },
+    // darkMode: 'class',
   }
