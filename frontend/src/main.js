@@ -10,6 +10,9 @@ import AdminHome from './views/AdminDashboard/AdminHome.vue';
 import ArtistHome from './views/ArtistDashboard/ArtistHome.vue';
 import AdminArtists from './views/AdminDashboard/AdminArtists.vue';
 import AdminAlbums from './views/AdminDashboard/AdminAlbums.vue';
+import AdminStats from './views/AdminDashboard/AdminStats.vue';
+import AdminFinance from './views/AdminDashboard/AdminFinance.vue';
+import AdminSettings from './views/AdminDashboard/AdminSettings.vue';
 
 const router = createRouter({
     history: createWebHistory(), 
@@ -28,6 +31,21 @@ const router = createRouter({
         path: '/adminAlbums',
         name: 'AdminAlbums',
         component: AdminAlbums,
+      },
+      {
+        path: '/adminstats',
+        name: 'AdminStats',
+        component: AdminStats,
+      },
+      {
+        path: '/adminFinance',
+        name: 'AdminFinance',
+        component: AdminFinance,
+      },
+      {
+        path: '/adminsettings',
+        name: 'AdminSettings',
+        component: AdminSettings,
       },
         {
             path: '/auth',
@@ -56,6 +74,17 @@ const router = createRouter({
         },
     ]
 });
+
+export const CHART_THEME = {
+  dark: {
+    mode: 'dark',
+    foreColor: 'var(--text-secondary)'
+  },
+  light: {
+    mode: 'light',
+    foreColor: 'var(--text-secondary)'
+  }
+}
 
 // Middleware global pour vérifier l'authentification avant d'accéder aux routes protégées
 router.beforeEach((to, from, next) => {
