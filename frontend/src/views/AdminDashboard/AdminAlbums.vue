@@ -38,8 +38,8 @@
 import Navbar from '../../components/Navbar.vue'
 import Header from '../../components/Header.vue'
 import StatsOverview from '../../components/albums/StatsOverview.vue'
-import ControlsSection from '../../components/albums/ControlsSection.vue'
 import ModerationSection from '../../components/albums/ModerationSection.vue'
+import ControlsSection from '../../components/albums/ControlsSection.vue'
 import AlbumsGrid from '../../components/albums/AlbumsGrid.vue'
 import ChartsSection from '../../components/albums/ChartsSection.vue'
 

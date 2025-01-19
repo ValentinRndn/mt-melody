@@ -28,10 +28,10 @@
 import { reactive } from 'vue'
 import Navbar from '../../components/Navbar.vue'
 import Header from '../../components/Header.vue'
-import StatsGrid from '../../components/AdminHome/StatsGrid.vue'
-import PerformanceChart from '../../components/AdminHome/PerformanceChart.vue'
-import GenreDistributionChart from '../../components/AdminHome/GenreDistributionChart.vue'
-import RecentActivity from '../../components/AdminHome/RecentActivity.vue'
+// import StatsGrid from '../../components/AdminHome/StatsGrid.vue'
+// import PerformanceChart from '../../components/AdminHome/PerformanceChart.vue'
+// import GenreDistributionChart from '../../components/AdminHome/GenreDistributionChart.vue'
+// import RecentActivity from '../../components/AdminHome/RecentActivity.vue'
 
 const statsData = reactive([
   {

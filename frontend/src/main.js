@@ -2,10 +2,10 @@ import { createApp } from 'vue'; // Import correct pour Vue 3
 import './style.css';
 import App from './App.vue';
 import { createRouter, createWebHistory } from 'vue-router'; // Import correct pour Vue Router 4
+import Home from './views/Home.vue';
 import AdminPage from './views/AdminPage.vue';
 import Authentification from './views/Authentification.vue';
 import profileParameter from './views/ProfileParameter.vue';
-import Home from './views/Home.vue';
 import AdminHome from './views/AdminDashboard/AdminHome.vue';
 import ArtistHome from './views/ArtistDashboard/ArtistHome.vue';
 import AdminArtists from './views/AdminDashboard/AdminArtists.vue';
@@ -22,6 +22,7 @@ const router = createRouter({
         name: 'home',
         component: Home,
       },
+
       {
         path: '/adminPage',
         name: 'adminPage',
@@ -67,6 +68,9 @@ const router = createRouter({
           name: 'AdminArtists',
           component: AdminArtists,
         },
+
+
+        
         {
           path: '/artistHome',
           name: 'ArtistHome',
