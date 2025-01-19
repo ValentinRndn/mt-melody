@@ -8,8 +8,8 @@
     ]"
   >
     <!-- Logo Section -->
-    <div class="px-4 py-6">
-      <div class="flex items-center gap-3">
+    <div class="px-4 py-6 ">
+      <div class="flex items-center gap-3 justify-center">
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
           class="text-primary w-8 h-8"

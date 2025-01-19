@@ -1,6 +1,6 @@
 <!-- components/finance/ChartsSection.vue -->
 <template>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+    <div class="grid grid-cols-2 sm:grid-cols-1 gap-6 mb-8">
       <div 
         v-for="chart in charts"
         :key="chart.id"

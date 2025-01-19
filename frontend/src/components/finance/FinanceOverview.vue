@@ -1,6 +1,6 @@
 <!-- components/finance/FinanceOverview.vue -->
 <template>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-3  sm:grid-cols-1 gap-6 mb-8">
       <div 
         v-for="card in financeCards" 
         :key="card.id"

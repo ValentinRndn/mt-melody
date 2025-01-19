@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-2 sm:grid-cols-1 gap-6">
       <div class="lg:col-span-2 bg-card-bg rounded-2xl p-6 border border-border">
         <h3 class="text-lg font-semibold mb-4">Performance des sorties</h3>
         <div id="releasesChart"></div>
