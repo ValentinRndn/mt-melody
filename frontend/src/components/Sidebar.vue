@@ -28,7 +28,7 @@
   
   const navItems = [
     { label: 'Tableau de bord', path: '/dashboard', icon: 'fa-home' },
-    { label: 'Mes Titres', path: '/tracks', icon: 'fa-compact-disc' },
+    { label: 'Mes Titres', path: '/artistTitles', icon: 'fa-compact-disc' },
     { label: 'Statistiques', path: '/stats', icon: 'fa-chart-line' },
     { label: 'Revenus', path: '/revenue', icon: 'fa-dollar-sign' },
     { label: 'Paramètres', path: '/settings', icon: 'fa-cog' }

@@ -38,7 +38,6 @@
   import ListeningChart from '../../components/artistComponents/home/ListeningChart.vue'
   import TopTracksChart from '../../components/artistComponents/home/TopTracksChart.vue'
   import RecentActivity from '../../components/artistComponents/home/RecentActivity.vue'
-  import UploadModal from '../../components/artistComponents/home.vue'
   
   const showUploadModal = ref(false)
   

@@ -7,12 +7,14 @@ import AdminPage from './views/AdminPage.vue';
 import Authentification from './views/Authentification.vue';
 import profileParameter from './views/ProfileParameter.vue';
 import AdminHome from './views/AdminDashboard/AdminHome.vue';
-import ArtistHome from './views/ArtistDashboard/ArtistHome.vue';
 import AdminArtists from './views/AdminDashboard/AdminArtists.vue';
 import AdminAlbums from './views/AdminDashboard/AdminAlbums.vue';
 import AdminStats from './views/AdminDashboard/AdminStats.vue';
 import AdminFinance from './views/AdminDashboard/AdminFinance.vue';
 import AdminSettings from './views/AdminDashboard/AdminSettings.vue';
+
+import ArtistHome from './views/ArtistDashboard/ArtistHome.vue';
+import ArtistTitles from './views/ArtistDashboard/ArtistTitles.vue';
 
 const router = createRouter({
     history: createWebHistory(), 
@@ -76,6 +78,11 @@ const router = createRouter({
           name: 'ArtistHome',
           component: ArtistHome,
         },
+        {
+          path: '/artistTitles',
+          name: 'ArtistTitles',
+          component: ArtistTitles,
+        }
     ]
 });
 
