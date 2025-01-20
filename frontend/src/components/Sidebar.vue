@@ -31,6 +31,6 @@
     { label: 'Mes Titres', path: '/artistTitles', icon: 'fa-compact-disc' },
     { label: 'Statistiques', path: '/artistStats', icon: 'fa-chart-line' },
     { label: 'Revenus', path: '/artistRevenus', icon: 'fa-dollar-sign' },
-    { label: 'Paramètres', path: '/settings', icon: 'fa-cog' }
+    { label: 'Paramètres', path: '/artistSettings', icon: 'fa-cog' }
   ]
   </script>

@@ -3,6 +3,7 @@ import './style.css';
 import App from './App.vue';
 import { createRouter, createWebHistory } from 'vue-router'; // Import correct pour Vue Router 4
 import Home from './views/Home.vue';
+
 import AdminHome from './views/AdminDashboard/AdminHome.vue';
 import AdminArtists from './views/AdminDashboard/AdminArtists.vue';
 import AdminAlbums from './views/AdminDashboard/AdminAlbums.vue';
@@ -14,6 +15,7 @@ import ArtistHome from './views/ArtistDashboard/ArtistHome.vue';
 import ArtistTitles from './views/ArtistDashboard/ArtistTitles.vue';
 import ArtistStats from './views/ArtistDashboard/ArtistStats.vue';
 import ArtistRevenus from './views/ArtistDashboard/ArtistRevenus.vue';
+import ArtistSettings from './views/ArtistDashboard/ArtistSettings.vue';
 
 const router = createRouter({
     history: createWebHistory(), 
@@ -75,6 +77,11 @@ const router = createRouter({
           path: '/artistRevenus',
           name: 'ArtistRevenus',
           component: ArtistRevenus,
+        },
+        {
+          path: '/artistSettings',
+          name: 'ArtistSettings',
+          component: ArtistSettings,
         }
     ]
 });
