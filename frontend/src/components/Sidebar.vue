@@ -27,10 +27,10 @@
   const currentPath = window.location.pathname
   
   const navItems = [
-    { label: 'Tableau de bord', path: '/dashboard', icon: 'fa-home' },
+    { label: 'Tableau de bord', path: '/artistHome', icon: 'fa-home' },
     { label: 'Mes Titres', path: '/artistTitles', icon: 'fa-compact-disc' },
-    { label: 'Statistiques', path: '/stats', icon: 'fa-chart-line' },
-    { label: 'Revenus', path: '/revenue', icon: 'fa-dollar-sign' },
+    { label: 'Statistiques', path: '/artistStats', icon: 'fa-chart-line' },
+    { label: 'Revenus', path: '/artistRevenus', icon: 'fa-dollar-sign' },
     { label: 'Paramètres', path: '/settings', icon: 'fa-cog' }
   ]
   </script>
