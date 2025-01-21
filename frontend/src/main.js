@@ -49,6 +49,7 @@ const router = createRouter({
           path: '/adminHome',
           name: 'AdminHome',
           component: AdminHome,
+          // meta: { requiresAuth: true, role: 'admin' }
         },
         {
           path: '/adminArtists',
@@ -62,6 +63,7 @@ const router = createRouter({
           path: '/artistHome',
           name: 'ArtistHome',
           component: ArtistHome,
+          // meta: { requiresAuth: true, role: 'artist' }
         },
         {
           path: '/artistTitles',
@@ -97,20 +99,22 @@ export const CHART_THEME = {
   }
 }
 
-// Middleware global pour vérifier l'authentification avant d'accéder aux routes protégées
-// router.beforeEach((to, from, next) => {
-//     if (to.matched.some(record => record.meta.requiresAuth)) {
-//       const token = localStorage.getItem('token');
-    
-//       if (!token) {
-//         next({ name: 'auth' }); 
-//       } else {
-//         next(); 
-//       }
-//     } else {
-//       next();
-//     }
-//   });
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+  const userRole = localStorage.getItem('userRole')
+
+  if (to.meta.requiresAuth && !token) {
+    next('/')
+    return
+  }
+
+  if (to.meta.role && to.meta.role !== userRole) {
+    next('/')
+    return
+  }
+
+  next()
+})
   
 
 

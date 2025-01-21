@@ -1,32 +1,47 @@
+// middleware/auth.js
 const jwt = require('jsonwebtoken');
 
-module.exports = function (req, res, next) {
-  // Récupérer l'en-tête Authorization
-  const authHeader = req.header('Authorization');
-
-  // Si l'en-tête Authorization n'existe pas
-  if (!authHeader) {
-    return res.status(401).json({ message: 'No token, authorization denied' });
-  }
-
-  // Extraire le token de l'en-tête Authorization ("Bearer <token>")
-  const token = authHeader.split(' ')[1];
-
-  // Si le token n'existe pas dans l'en-tête
-  if (!token) {
-    return res.status(401).json({ message: 'Token not found' });
-  }
-
+module.exports = (req, res, next) => {
   try {
-    // Vérifier et décoder le token JWT avec la clé secrète
+    // Vérifier si le header Authorization existe
+    const authHeader = req.header('Authorization');
+    if (!authHeader) {
+      return res.status(401).json({
+        success: false,
+        message: 'Pas de token fourni'
+      });
+    }
+
+    // Extraire le token
+    const token = authHeader.startsWith('Bearer ') 
+      ? authHeader.slice(7) 
+      : authHeader;
+
+    if (!token) {
+      return res.status(401).json({
+        success: false,
+        message: 'Token non valide'
+      });
+    }
+
+    // Vérifier le token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    
+    // Vérifier que decoded.user existe
+    if (!decoded || !decoded.user) {
+      return res.status(401).json({
+        success: false,
+        message: 'Token malformé'
+      });
+    }
 
-    // Ajouter les informations de l'utilisateur décodé à la requête
     req.user = decoded.user;
-
-    next(); // Continuer vers la route suivante
-  } catch (err) {
-    console.error('Token verification failed:', err.message);
-    return res.status(401).json({ message: 'Token is not valid' });
+    next();
+  } catch (error) {
+    console.error('Auth Middleware Error:', error);
+    res.status(401).json({
+      success: false,
+      message: 'Token non valide ou expiré'
+    });
   }
 };

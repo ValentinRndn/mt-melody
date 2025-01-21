@@ -23,6 +23,9 @@ module.exports = {
         'danger': '#ff4444',
         'warning': '#FFA500',
         'success': '#00CC66',
+        'text-white': 'var(--text-white)',
+        'accent-green': 'var(--accent-green)',
+        'hover-bg': 'var(--hover-bg)',
 
       },
       fontFamily: {
