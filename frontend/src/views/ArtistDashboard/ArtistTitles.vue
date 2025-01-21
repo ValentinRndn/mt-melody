@@ -21,7 +21,7 @@
         </div>
   
         <!-- Stats rapides -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="grid grid-cols-3 md:grid-cols-3 gap-6 mb-8">
           <div class="bg-card-bg rounded-2xl p-6 border border-border">
             <div class="text-text-secondary mb-2">Total des titres</div>
             <div class="text-2xl font-bold">{{ totalTracks }}</div>

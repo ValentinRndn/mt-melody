@@ -33,7 +33,7 @@
         </div>
   
         <!-- Statistiques principales -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="grid grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-8">
           <StatCard
             v-for="stat in mainStats"
             :key="stat.id"
@@ -43,7 +43,7 @@
         </div>
   
         <!-- Graphiques -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div class="grid grid-cols-2 sm:grid-cols-1 gap-6 mb-8">
           <ListeningTrendsChart 
             :data="listeningTrends"
             class="bg-card-bg rounded-2xl border border-border p-6"

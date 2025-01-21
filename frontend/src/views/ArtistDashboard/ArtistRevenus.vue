@@ -41,7 +41,7 @@
         </div>
   
         <!-- Cartes de métriques -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="grid grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-8">
           <StatCard 
             v-for="stat in revenueStats" 
             :key="stat.id" 
@@ -50,7 +50,7 @@
         </div>
   
         <!-- Sections détaillées -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div class="grid grid-cols-2 sm:grid-cols-1 gap-6 mb-8">
           <!-- Sources de revenus -->
           <div class="bg-card-bg rounded-2xl border border-border p-6">
             <h3 class="text-lg font-semibold mb-6">Sources de revenus</h3>
