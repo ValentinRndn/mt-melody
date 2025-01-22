@@ -91,16 +91,44 @@
           />
         </div>
   
-        <!-- Prévisions -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
-          <div class="bg-card-bg rounded-2xl border border-border p-6">
-            <h3 class="text-lg font-semibold mb-6">Prévisions de revenus</h3>
-            <RevenueForecastChart :data="forecastData" />
-            <div class="mt-4 text-text-secondary">
-              <p>Croissance estimée: <span class="text-primary">+{{ estimatedGrowth }}%</span></p>
-              <p>Basé sur les {{ lastMonths }} derniers mois d'activité</p>
-            </div>
+<!-- Prévisions -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+    <div class="bg-card-bg rounded-2xl border border-border p-6">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-lg font-semibold">Prévisions de revenus</h3>
+        <div class="flex items-center gap-2 text-text-secondary">
+          <i class="fas fa-info-circle"></i>
+          <span class="text-sm">Basé sur {{ lastMonths }} mois d'historique</span>
+        </div>
+      </div>
+      
+      <RevenueForecastChart 
+        :data="forecastData"
+        class="mb-4"
+      />
+
+      <div class="mt-6 grid grid-cols-2 gap-4">
+        <div class="bg-background/50 rounded-lg p-4">
+          <p class="text-text-secondary text-sm mb-1">Croissance estimée</p>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-semibold text-primary">
+              +{{ estimatedGrowth }}%
+            </span>
+            <i class="fas fa-arrow-trend-up text-primary"></i>
           </div>
+        </div>
+        
+        <div class="bg-background/50 rounded-lg p-4">
+          <p class="text-text-secondary text-sm mb-1">Revenu prévu (Déc)</p>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-semibold">
+              {{ formatCurrency(4200) }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   
           <div class="bg-card-bg rounded-2xl border border-border p-6">
             <h3 class="text-lg font-semibold mb-6">Recommendations</h3>
@@ -118,7 +146,7 @@
   </template>
   
   <script setup>
-  import { ref, computed } from 'vue'
+  import { ref, computed, watch } from 'vue'
   import Sidebar from '../../components/Sidebar.vue'
   import Header from '../../components/Header.vue'
   import RevenueChart from '../../components/artistComponents/revenus/RevenueChart.vue'
@@ -232,6 +260,31 @@
     }
   ])
   
+  // Fonction pour calculer la croissance entre deux valeurs
+    const calculateGrowth = (current, previous) => {
+      return ((current - previous) / previous * 100).toFixed(1)
+    }
+
+    // Fonction pour mettre à jour les prévisions
+    const updateForecast = () => {
+      // Ici, vous pourriez ajouter la logique pour recalculer les prévisions
+      // basée sur les données réelles les plus récentes
+      
+      const lastActualValue = forecastData.value.actual.data[forecastData.value.actual.data.length - 1]
+      const monthlyGrowthRate = estimatedGrowth.value / 12 // Croissance mensuelle
+
+      // Mettre à jour les données de prévision
+      forecastData.value.forecast.data = forecastData.value.forecast.labels.map((_, index) => {
+        const monthsAhead = index + 1
+        return Math.round(lastActualValue * (1 + (monthlyGrowthRate / 100) * monthsAhead))
+      })
+    }
+
+    // Observer les changements de période pour mettre à jour les prévisions
+    watch(dateRange, () => {
+      updateForecast()
+    }, { deep: true })
+
   // Computed
   const filteredTransactions = computed(() => {
     if (currentTransactionFilter.value === 'all') return transactions.value

@@ -4,11 +4,11 @@
       'fixed h-screen transition-all duration-300 ease-in-out z-40',
       'bg-sidebar border-r border-border',
       isExpanded ? 'w-[280px]' : 'w-[80px]',
-      'lg:relative'
+      'lg:relative flex flex-col'
     ]"
   >
     <!-- Logo Section -->
-    <div class="px-4 py-6 ">
+    <div class="px-4 py-6">
       <div class="flex items-center gap-3 justify-center">
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
@@ -29,7 +29,7 @@
     </div>
 
     <!-- Navigation Links -->
-    <nav class="px-2 mt-6">
+    <nav class="px-2 mt-6 flex-grow">
       <div class="space-y-1">
         <router-link
           v-for="item in navigationItems"
@@ -52,15 +52,33 @@
       </div>
     </nav>
 
-
+    <!-- Bouton de déconnexion -->
+    <div class="px-2 pb-6">
+      <button
+        @click="handleLogout"
+        :class="[
+          'flex items-center w-full px-3 py-3 rounded-lg transition-all duration-200',
+          'hover:bg-hover hover:text-danger text-text-secondary',
+        ]"
+      >
+        <i class="fas fa-sign-out-alt w-6 h-6"></i>
+        <span 
+          class="ml-3 font-medium transition-opacity duration-300"
+          :class="{ 'opacity-0 lg:opacity-100': !isExpanded }"
+        >
+          Déconnexion
+        </span>
+      </button>
+    </div>
   </aside>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
+const router = useRouter()
 const isExpanded = ref(true) // Par défaut étendu
 const currentRoute = computed(() => route.path)
 
@@ -100,5 +118,14 @@ const navigationItems = [
 
 const toggleSidebar = () => {
   isExpanded.value = !isExpanded.value
+}
+
+const handleLogout = () => {
+  // Supprimer le token et autres données de session
+  localStorage.removeItem('token')
+  localStorage.removeItem('userRole')
+  
+  // Rediriger vers la page de connexion
+  router.push('/')
 }
 </script>

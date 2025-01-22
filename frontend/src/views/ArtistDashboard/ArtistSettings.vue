@@ -33,32 +33,48 @@
             <div v-if="currentTab === 'profile'" class="space-y-8">
                 <!-- Photo de profil -->
                 <div class="bg-card-bg border border-border rounded-xl p-6">
-                <h3 class="text-lg font-semibold mb-4">Photo de profil</h3>
-                <div class="flex items-center gap-6">
+                    <h3 class="text-lg font-semibold mb-4">Photo de profil</h3>
+                    <div class="flex items-center gap-6">
                     <div class="relative group">
-                    <img
+                        <img
                         :src="profile.avatar"
                         alt="Photo de profil"
                         class="w-24 h-24 rounded-full object-cover"
-                    />
-                    <div class="absolute inset-0 bg-black/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <button class="text-white text-sm">Modifier</button>
-                    </div>
+                        />
+                        <div class="absolute inset-0 bg-black/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <button @click="triggerFileInput" class="text-white text-sm">Modifier</button>
+                        </div>
                     </div>
                     <div class="space-y-2">
-                    <div class="flex gap-3">
-                        <button class="px-4 py-2 bg-primary text-white rounded-lg hover:opacity-90 transition-opacity">
-                        Télécharger
+                        <div class="flex gap-3">
+                        <input
+                            type="file"
+                            ref="fileInput"
+                            @change="handleFileUpload"
+                            accept="image/png, image/jpeg"
+                            class="hidden"
+                        />
+                        <button 
+                            @click="triggerFileInput"
+                            class="px-4 py-2 bg-primary text-white rounded-lg hover:opacity-90 transition-opacity"
+                        >
+                            Télécharger
                         </button>
-                        <button class="px-4 py-2 border border-border rounded-lg hover:bg-hover transition-colors">
-                        Supprimer
+                        <button 
+                            @click="removeAvatar"
+                            class="px-4 py-2 border border-border rounded-lg hover:bg-hover transition-colors"
+                        >
+                            Supprimer
                         </button>
-                    </div>
-                    <p class="text-sm text-text-secondary">
+                        </div>
+                        <p class="text-sm text-text-secondary">
                         Format JPG, PNG. Max 2Mo.
-                    </p>
+                        </p>
+                        <p v-if="uploadError" class="text-sm text-red-500">
+                        {{ uploadError }}
+                        </p>
                     </div>
-                </div>
+                    </div>
                 </div>
     
                 <!-- Informations personnelles -->
@@ -420,6 +436,77 @@
         status: 'Payé'
         }
     ])
+
+    const fileInput = ref(null)
+    const uploadError = ref('')
+
+    const triggerFileInput = () => {
+    fileInput.value.click()
+    }
+
+    const handleFileUpload = async (event) => {
+    const file = event.target.files[0]
+    if (!file) return
+
+    // Vérifications de type et taille...
+
+    try {
+        const formData = new FormData()
+        formData.append('avatar', file)
+
+        const token = localStorage.getItem('token')
+        if (!token) {
+        throw new Error('Non authentifié')
+        }
+
+        const response = await fetch('http://localhost:5000/api/users/upload-avatar', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        body: formData
+        })
+
+        const data = await response.json()
+
+        if (!data.success) {
+        throw new Error(data.message)
+        }
+
+        // Mettre à jour l'avatar
+        profile.value.avatar = data.avatarUrl
+
+    } catch (error) {
+        console.error('Erreur upload:', error)
+        uploadError.value = error.message || 'Erreur lors du téléchargement'
+        profile.value.avatar = '/placeholder-avatar.jpg'
+    }
+    }
+
+    const removeAvatar = async () => {
+    try {
+        // Appel API pour supprimer l'avatar
+        const response = await fetch('votre-api/remove-avatar', {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json'
+        }
+        })
+
+        if (!response.ok) {
+        throw new Error('Erreur lors de la suppression')
+        }
+
+        // Remettre l'avatar par défaut
+        profile.value.avatar = '/placeholder-avatar.jpg'
+
+    } catch (error) {
+        console.error('Erreur suppression:', error)
+        uploadError.value = 'Erreur lors de la suppression. Veuillez réessayer.'
+    }
+    }
+
     
     // Méthodes
     const saveProfile = () => {
