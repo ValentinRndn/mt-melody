@@ -10,7 +10,7 @@
     <!-- Logo Section -->
     <div class="px-4 py-6">
       <div class="flex items-center gap-3 justify-center">
-        <i class="fas fa-music text-primary text-2xl"></i>
+        <i class="fas fa-music text-primary text-2xl flex items-center"></i>
         <span 
           class="text-primary font-bold text-xl transition-opacity duration-300"
           :class="{ 'opacity-0 lg:opacity-100': !isExpanded }"
@@ -33,9 +33,11 @@
             currentRoute === item.path ? 'bg-hover text-primary' : 'text-text-secondary',
           ]"
         >
-          <i :class="['fas', item.icon, 'w-6 h-6']"></i>
+          <div class="w-6 flex items-center justify-center">
+            <i :class="['fas', item.icon]"></i>
+          </div>
           <span 
-            class="ml-3 font-medium transition-opacity duration-300"
+            class="ml-3 font-medium transition-opacity duration-300 flex items-center"
             :class="{ 'opacity-0 lg:opacity-100': !isExpanded }"
           >
             {{ item.label }}
@@ -53,9 +55,11 @@
           'hover:bg-hover hover:text-danger text-text-secondary',
         ]"
       >
-        <i class="fas fa-sign-out-alt w-6 h-6"></i>
+        <div class="w-6 flex items-center justify-center">
+          <i class="fas fa-sign-out-alt"></i>
+        </div>
         <span 
-          class="ml-3 font-medium transition-opacity duration-300"
+          class="ml-3 font-medium transition-opacity duration-300 flex items-center"
           :class="{ 'opacity-0 lg:opacity-100': !isExpanded }"
         >
           Déconnexion
@@ -87,11 +91,8 @@ const toggleSidebar = () => {
 }
 
 const handleLogout = () => {
-  // Supprimer le token et autres données de session
   localStorage.removeItem('token')
   localStorage.removeItem('userRole')
-  
-  // Rediriger vers la page de connexion
   router.push('/')
 }
 </script>

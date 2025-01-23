@@ -18,7 +18,7 @@
             </div>
             <div class="h-2 bg-hover rounded-full overflow-hidden">
               <div 
-                class="h-full bg-primary transition-all duration-300"
+                class="h-full bg-[#22c55e] transition-all duration-300"
                 :style="{ width: `${item.value}%` }"
               ></div>
             </div>
@@ -51,6 +51,12 @@ const props = defineProps({
 const genderChartRef = ref(null)
 let genderChart = null
 
+const chartColors = [
+  '#22c55e', // Vert principal
+  '#16a34a',
+  '#15803d'
+]
+
 const updateGenderChart = () => {
   if (genderChart) {
     genderChart.data.labels = props.data.gender.map(item => item.label)
@@ -68,11 +74,8 @@ const createGenderChart = () => {
       labels: props.data.gender.map(item => item.label),
       datasets: [{
         data: props.data.gender.map(item => item.value),
-        backgroundColor: [
-          'rgba(var(--primary-rgb), 0.8)',
-          'rgba(var(--primary-rgb), 0.5)',
-          'rgba(var(--primary-rgb), 0.3)'
-        ]
+        backgroundColor: chartColors,
+        borderWidth: 0
       }]
     },
     options: {
@@ -80,7 +83,26 @@ const createGenderChart = () => {
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          position: 'right'
+          position: 'right',
+          labels: {
+            color: '#9ca3af',
+            padding: 20,
+            font: {
+              size: 12
+            }
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          titleColor: '#fff',
+          bodyColor: '#fff',
+          padding: 10,
+          displayColors: true,
+          callbacks: {
+            label: function(context) {
+              return `${context.label}: ${context.parsed}%`
+            }
+          }
         }
       }
     }

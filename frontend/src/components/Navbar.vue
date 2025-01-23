@@ -28,48 +28,52 @@
       </div>
     </div>
 
-    <!-- Navigation Links -->
-    <nav class="px-2 mt-6 flex-grow">
-      <div class="space-y-1">
-        <router-link
-          v-for="item in navigationItems"
-          :key="item.path"
-          :to="item.path"
-          :class="[
-            'flex items-center px-3 py-3 rounded-lg transition-all duration-200',
-            'hover:bg-hover hover:text-primary',
-            currentRoute === item.path ? 'bg-hover text-primary' : 'text-text-secondary',
-          ]"
-        >
-          <i :class="['fas', item.icon, 'w-6 h-6']"></i>
-          <span 
-            class="ml-3 font-medium transition-opacity duration-300"
-            :class="{ 'opacity-0 lg:opacity-100': !isExpanded }"
-          >
-            {{ item.name }}
-          </span>
-        </router-link>
-      </div>
-    </nav>
-
-    <!-- Bouton de déconnexion -->
-    <div class="px-2 pb-6">
-      <button
-        @click="handleLogout"
+  <!-- Navigation Links -->
+  <nav class="px-2 mt-6 flex-grow">
+    <div class="space-y-1">
+      <router-link
+        v-for="item in navigationItems"
+        :key="item.path"
+        :to="item.path"
         :class="[
-          'flex items-center w-full px-3 py-3 rounded-lg transition-all duration-200',
-          'hover:bg-hover hover:text-danger text-text-secondary',
+          'flex items-center px-3 py-3 rounded-lg transition-all duration-200',
+          'hover:bg-hover hover:text-primary',
+          currentRoute === item.path ? 'bg-hover text-primary' : 'text-text-secondary',
         ]"
       >
-        <i class="fas fa-sign-out-alt w-6 h-6"></i>
+        <div class="flex items-center justify-center w-6">
+          <i :class="['fas', item.icon, 'text-lg']"></i>
+        </div>
         <span 
           class="ml-3 font-medium transition-opacity duration-300"
           :class="{ 'opacity-0 lg:opacity-100': !isExpanded }"
         >
-          Déconnexion
+          {{ item.name }}
         </span>
-      </button>
+      </router-link>
     </div>
+  </nav>
+
+  <!-- Bouton de déconnexion -->
+  <div class="px-2 pb-6">
+    <button
+      @click="handleLogout"
+      :class="[
+        'flex items-center w-full px-3 py-3 rounded-lg transition-all duration-200',
+        'hover:bg-hover hover:text-danger text-text-secondary',
+      ]"
+    >
+      <div class="flex items-center justify-center w-6">
+        <i class="fas fa-sign-out-alt text-lg"></i>
+      </div>
+      <span 
+        class="ml-3 font-medium transition-opacity duration-300"
+        :class="{ 'opacity-0 lg:opacity-100': !isExpanded }"
+      >
+        Déconnexion
+      </span>
+    </button>
+  </div>
   </aside>
 </template>
 

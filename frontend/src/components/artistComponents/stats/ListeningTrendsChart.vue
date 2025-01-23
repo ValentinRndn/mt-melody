@@ -39,10 +39,11 @@ const createChart = () => {
       datasets: [{
         label: 'Écoutes',
         data: props.data.datasets[0].data,
-        borderColor: 'var(--primary)',
-        backgroundColor: 'rgba(var(--primary-rgb), 0.1)',
+        borderColor: '#10b981', // Couleur verte claire
+        backgroundColor: 'rgba(16, 185, 129, 0.1)', // Vert avec transparence
         tension: 0.4,
-        fill: true
+        fill: true,
+        borderWidth: 2
       }]
     },
     options: {
@@ -51,19 +52,49 @@ const createChart = () => {
       plugins: {
         legend: {
           display: false
+        },
+        tooltip: {
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          titleColor: '#fff',
+          bodyColor: '#fff',
+          padding: 10,
+          displayColors: false
         }
       },
       scales: {
         y: {
           beginAtZero: true,
           grid: {
-            color: 'rgba(var(--border-rgb), 0.1)'
+            color: 'rgba(255, 255, 255, 0.1)'
+          },
+          ticks: {
+            color: '#9ca3af',
+            font: {
+              size: 11
+            }
           }
         },
         x: {
           grid: {
             display: false
+          },
+          ticks: {
+            color: '#9ca3af',
+            font: {
+              size: 11
+            }
           }
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index'
+      },
+      elements: {
+        point: {
+          radius: 0,
+          hoverRadius: 6,
+          backgroundColor: '#10b981'
         }
       }
     }

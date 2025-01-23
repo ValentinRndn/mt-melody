@@ -58,12 +58,32 @@ export default {
     return {
       searchTerm: '',
       activeFilter: 'all',
-      statsData: {
-        totalReleases: 350,
-        monthlyListens: '1.2M',
-        averageRating: 4.8,
-        monthlyRevenue: '25.4K'
-      },
+      statsData: [
+        { 
+          id: 1, 
+          icon: 'fas fa-music fa-xl', 
+          value: '350', 
+          label: 'Total des Sorties' 
+        },
+        { 
+          id: 2, 
+          icon: 'fas fa-play fa-xl', 
+          value: '1.2M', 
+          label: 'Écoutes ce mois' 
+        },
+        { 
+          id: 3, 
+          icon: 'fas fa-star fa-xl', 
+          value: '4.8', 
+          label: 'Note moyenne' 
+        },
+        { 
+          id: 4, 
+          icon: 'fas fa-euro-sign fa-xl', 
+          value: '25.4K', 
+          label: 'Revenus ce mois' 
+        }
+      ],
       pendingReleases: [
         {
           id: 1,

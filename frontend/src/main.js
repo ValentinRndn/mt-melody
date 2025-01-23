@@ -1,5 +1,6 @@
 import { createApp } from 'vue'; // Import correct pour Vue 3
 import './style.css';
+
 import App from './App.vue';
 import { createRouter, createWebHistory } from 'vue-router'; // Import correct pour Vue Router 4
 import Home from './views/Home.vue';

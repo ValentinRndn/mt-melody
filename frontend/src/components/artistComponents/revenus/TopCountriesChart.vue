@@ -35,8 +35,9 @@
         labels: props.data.map(item => item.country),
         datasets: [{
           data: props.data.map(item => item.value),
-          backgroundColor: 'rgba(var(--primary-rgb), 0.8)',
-          borderRadius: 4
+          backgroundColor: '#22c55e',
+          borderRadius: 4,
+          borderWidth: 0
         }]
       },
       options: {
@@ -48,6 +49,10 @@
             display: false
           },
           tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            padding: 10,
             callbacks: {
               label: (context) => {
                 return new Intl.NumberFormat('fr-FR', {
@@ -64,6 +69,10 @@
               display: false
             },
             ticks: {
+              color: '#9ca3af',
+              font: {
+                size: 11
+              },
               callback: (value) => {
                 return new Intl.NumberFormat('fr-FR', {
                   style: 'currency',
@@ -76,6 +85,12 @@
           y: {
             grid: {
               display: false
+            },
+            ticks: {
+              color: '#9ca3af',
+              font: {
+                size: 11
+              }
             }
           }
         }

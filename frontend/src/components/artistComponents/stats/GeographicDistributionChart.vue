@@ -21,6 +21,14 @@
   const chartRef = ref(null)
   let chart = null
   
+  const chartColors = [
+    '#22c55e', // Vert principal
+    '#16a34a',
+    '#15803d',
+    '#166534',
+    '#14532d'
+  ]
+  
   const updateChart = () => {
     if (chart) {
       chart.data.labels = props.data.map(item => item.country)
@@ -38,13 +46,8 @@
         labels: props.data.map(item => item.country),
         datasets: [{
           data: props.data.map(item => item.value),
-          backgroundColor: [
-            'rgba(var(--primary-rgb), 0.8)',
-            'rgba(var(--primary-rgb), 0.6)',
-            'rgba(var(--primary-rgb), 0.4)',
-            'rgba(var(--primary-rgb), 0.2)',
-            'rgba(var(--primary-rgb), 0.1)'
-          ]
+          backgroundColor: chartColors,
+          borderWidth: 0
         }]
       },
       options: {
@@ -52,9 +55,29 @@
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            position: 'right'
+            position: 'right',
+            labels: {
+              color: '#9ca3af',
+              padding: 20,
+              font: {
+                size: 12
+              }
+            }
+          },
+          tooltip: {
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            padding: 10,
+            displayColors: true,
+            callbacks: {
+              label: function(context) {
+                return `${context.label}: ${context.parsed}%`
+              }
+            }
           }
-        }
+        },
+        cutout: '70%'
       }
     })
   }
