@@ -48,7 +48,7 @@ Application web qui permet aux artistes de visualiser l'évolution et les statis
 
 1. Clonez le dépôt :
    ```bash
-   git clone [https://github.com/votre-repo/academ.git](https://github.com/ValentinRndn/mt-melody.git)
+   git clone https://github.com/ValentinRndn/mt-melody.git
    cd mt-melody
    ```
 2. Installez les dépendances pour le backend :
