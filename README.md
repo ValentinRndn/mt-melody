@@ -1,6 +1,6 @@
 # **MT MELODY**
 
-Application web qui permet aux artistes de visualiser l'évolutions et les statistiques de leur contenu.
+Application web qui permet aux artistes de visualiser l'évolution et les statistiques de leur contenu.
 ---
 
 ## **Table des matières**
