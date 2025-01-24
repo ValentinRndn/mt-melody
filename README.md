@@ -82,14 +82,12 @@ Application web qui permet aux artistes de visualiser l'évolution et les statis
 ## **Lancement de l'application**
 
 1. Démarrez le serveur backend 
-   Backend
    ```bash
    cd backend
    node server
    ```
 
 2. Démarrez le serveur frontend 
-   Frontend
    ```bash
    cd frontend
    npm run dev
